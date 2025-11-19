@@ -1,0 +1,48 @@
+| Data Type                 | Plot Type           |
+| ------------------------- | ------------------- |
+| 1 Numeric                 | Histogram / Boxplot |
+| 1 Categorical + 1 Numeric | Barplot / Boxplot   |
+| 2 Numeric                 | Scatter / Lineplot  |
+| 2 Categorical             | Countplot / Heatmap |
+
+🧠 Use a Pie Chart When:
+
+✅ You have one categorical column
+✅ You want to show how much each category contributes to the total
+
+| Data Type       | Example       | Best Plot                    |
+| --------------- | ------------- | ---------------------------- |
+| Two Categorical | sex vs smoker | `countplot()` or `heatmap()` |
+
+sns.countplot(x="sex", hue="smoker", data=df)
+plt.title("Smoker vs Non-Smoker by Gender")
+plt.show()
+
+table = pd.crosstab(df["sex"], df["smoker"])
+sns.heatmap(table, annot=True, cmap="coolwarm")
+plt.title("Smoker Count by Gender (Heatmap)")
+plt.show()
+
+IRIS DATASET:
+| Task                        | Plot                    | Learn                      |
+| --------------------------- | ----------------------- | -------------------------- |
+| See distribution            | `histplot`, `boxplot`   | Spread & outliers          |
+| Compare 2 numeric columns   | `scatterplot`           | Relationships              |
+| Compare all numeric columns | `pairplot`              | Overall view               |
+| Compare category vs number  | `boxplot`, `violinplot` | Differences between groups |
+| Correlation                 | `heatmap`               | Strength of relationships  |
+
+| Plot           | Shows                        | Detail Level  |
+| -------------- | ---------------------------- | ------------- |
+| **Boxplot**    | Median, Quartiles, Outliers  | Basic         |
+| **Violinplot** | Boxplot + Distribution Shape | More Detailed |
+
+PENGUINS DATASET:
+| Task           | Plot                    | What You Learn            |
+| -------------- | ----------------------- | ------------------------- |
+| Distribution   | `histplot`, `boxplot`   | Spread of data            |
+| Relationship   | `scatterplot`           | Numeric correlation       |
+| Compare Groups | `boxplot`, `violinplot` | Category differences      |
+| Correlation    | `heatmap`               | How numbers move together |
+| Overview       | `pairplot`              | All in one chart          |
+
