@@ -15,3 +15,19 @@ def twoSum(nums, target):
             return [num_map[complement], i]
         num_map[num] = i
 print(twoSum([2, 7, 11, 15], 9))
+
+# 3. Two-Pointer Technique (Requires Sorted Array — O(n log n) due to sorting)
+def twoSum(nums, target):
+    nums_with_indices = list(enumerate(nums))
+    nums_with_indices.sort(key=lambda x: x[1])
+    
+    left, right = 0, len(nums) - 1
+    while left < right:
+        current_sum = nums_with_indices[left][1] + nums_with_indices[right][1]
+        if current_sum == target:
+            return [nums_with_indices[left][0], nums_with_indices[right][0]]
+        elif current_sum < target:
+            left += 1
+        else:
+            right -= 1
+print(twoSum([2, 7, 11, 15], 9))
