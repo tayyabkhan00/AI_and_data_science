@@ -64,3 +64,14 @@ for i in range(len(arr)):
         if arr[i] + arr[j] == target:
             print(i, j)
 
+# 8. Using numpy for array operations (O(n²))
+import numpy as np
+def twoSum(nums, target):
+    nums_array = np.array(nums)
+    for i in range(len(nums_array)):
+        for j in range(i + 1, len(nums_array)):
+            if nums_array[i] + nums_array[j] == target:
+                return [i, j]
+print(twoSum([2, 7, 11, 15], 9))
+
+
