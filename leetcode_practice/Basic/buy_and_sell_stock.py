@@ -1,3 +1,4 @@
+# optimized approach O(n)
 def maxProfit(prices):
     min_price = float('inf')     # 1
     max_profit = 0               # 2
@@ -13,4 +14,18 @@ def maxProfit(prices):
 
     return max_profit              # 9
 
-prices = [7, 1, 5, 3, 6, 4]
+
+# brute force approach O(n^2)
+stock = [1, 2, 3, 6, 5, 8, 3]
+
+max_profit = 0
+
+for i in range(len(stock)):           # i = buy day
+    for j in range(i + 1, len(stock)):  # j = sell day
+        profit = stock[j] - stock[i]   # calculate profit
+        if profit > max_profit:        # update best profit
+            max_profit = profit
+
+print(max_profit)
+
+        
