@@ -9,4 +9,39 @@ def maxSubArray(nums):
     
     return max_sum            # 6
 
-print(maxSubArray(nums))  # Output: 6
+print(maxSubArray(nums))  # Output: 6)
+
+# ---------------- EXTENDED FUNCTIONALITY ---------------- #
+
+def maxSubArray(nums):
+    current_sum = nums[0]
+    max_sum = nums[0]
+
+    start = 0        # temp start index
+    end = 0          # final end index of best subarray
+    best_start = 0   # final start index
+
+    for i in range(1, len(nums)):
+        if nums[i] > current_sum + nums[i]:
+            current_sum = nums[i]
+            start = i
+        else:
+            current_sum = current_sum + nums[i]
+
+        if current_sum > max_sum:
+            max_sum = current_sum
+            best_start = start
+            end = i
+
+    return max_sum, nums[best_start:end+1]   # return sum and the actual subarray
+
+
+# ---------------- USER INPUT SECTION ---------------- #
+
+# Take input from user (space-separated integers)
+nums = list(map(int, input("Enter numbers separated by space: ").split()))
+
+max_sum, subarray = maxSubArray(nums)
+
+print("Maximum Subarray Sum:", max_sum)
+print("Maximum Subarray:", subarray)
