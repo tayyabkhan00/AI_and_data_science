@@ -6,7 +6,7 @@ y = [2,4,6,8,10]
 
 # Split
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=0
+    X, y, test_size=0.20, random_state=0
 )
 
 # Create model
