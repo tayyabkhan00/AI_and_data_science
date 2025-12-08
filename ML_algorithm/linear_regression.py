@@ -9,5 +9,6 @@ y = np.array([40, 50, 60, 70, 80])      # marks
 model = LinearRegression()
 model.fit(X, y)
 
-# Predict
-print(model.predict([[7]]))  # predict marks for 7 hours
+print("Slope:", model.coef_)
+print("Intercept:", model.intercept_)
+print("Prediction for 7 hours:", model.predict([[7]]))
