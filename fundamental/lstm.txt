@@ -47,3 +47,31 @@ If RNN memory is like:
 👉 RAM that gets full quickly
 Then LSTM memory is like:
 👉 USB drive with organized folders
+
+⭐ 5. LSTM Formula (You don’t need to memorize)
+forget_gate = sigmoid(...)
+input_gate = sigmoid(...)
+candidate_state = tanh(...)
+cell_state = forget * old_cell + input * candidate
+output_gate = sigmoid(...)
+hidden_state = output_gate * tanh(cell_state)
+This looks complex, but the idea is simple:
+keep important things + forget unimportant things.
+
+⭐ 6. Where LSTMs Are Used
+Sentiment analysis
+Time series forecasting
+Text generation
+Speech recognition
+Chatbot dialogue (older systems)
+Stock/crypto prediction
+Translation (before Transformers)
+Still used in many production systems today.
+
+⭐ 8. Comparison: RNN vs LSTM
+Feature	                   RNN	         LSTM
+Memory	                  Short-term	Long-term
+Vanishing gradient	        Yes	          No (solved)
+Gates	                    No	         Yes (3 gates)
+Performance	                Low	         High
+Best for long sequences	     ❌	          ✔
