@@ -87,3 +87,8 @@ This is how weights are updated to reduce loss.
 Example:
 w too big → prediction too big → gradient positive → decrease w
 w too small → prediction too small → gradient negative → increase w
+
+💡 ONE-LINE EASY EXPLANATION
+
+Gradient tells the model which direction increases the loss.
+So the model goes in the opposite direction to reduce the loss.
