@@ -80,3 +80,52 @@ Important:
 Do NOT use softmax manually
 Model outputs raw scores (logits)
 CrossEntropyLoss applies softmax internally
+
+✅ Why we cannot use one loss function for everything
+Even if MSE, BCE, and CCE all say:
+"Prediction A is better than Prediction B"
+They change gradients differently, and gradients are what train the neural network.
+Neural networks don’t learn from the loss itself —
+They learn from d(loss)/d(weights) (gradient).
+Different losses → different gradients → different learning behavior. 
+
+🔥 REASON 1 — MSE gives very small gradients for classification → slow or failed learning
+Example:
+Binary classification uses sigmoid.
+If model predicts p = 0.01 but true = 1:
+Sigmoid is almost flat
+MSE gradient becomes tiny → almost no learning
+BCE gradient becomes HUGE → fast correction
+So BCE says:
+“Bro, this is very wrong, FIX IT FAST.”
+But MSE says:
+“Hmm… yeah you're wrong, but I'll whisper, not shout.”
+This is why MSE is terrible for classification.
+
+🔥 REASON 2 — BCE and CCE work with probabilities; MSE does NOT
+Classification outputs are probabilities (0–1), and:
+BCE handles binary probabilities
+CCE handles multi-class distributions
+MSE does not understand probabilities properly.
+
+🔥 REASON 3 — CCE works with Softmax; BCE works with Sigmoid
+Loss functions match with activation functions.
+Output type	Activation	Correct Loss
+Binary	Sigmoid	BCE
+Multi-class	Softmax	CCE
+Regression	Linear	MSE
+Using the wrong pair will break gradients.
+Example:
+Softmax + MSE → slow, unstable learning
+Sigmoid + MSE → vanishing gradients
+Linear + BCE → makes no sense
+
+🔥 REASON 4 — CCE scales well for MANY classes
+Imagine ImageNet with 1000 classes.
+CCE can compare all 1000 probabilities correctly.
+MSE cannot do that efficiently.
+CCE also punishes wrong confident predictions MUCH more strongly — which is needed.
+
+🔥 REASON 5 — Mathematically optimized for ML
+CCE and BCE come from maximum likelihood estimation, which is statistically correct for classification.
+MSE does not match classification theory.
