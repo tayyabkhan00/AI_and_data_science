@@ -66,3 +66,17 @@ Regression	                 MSE	                        Linear                 n
 Binary classification	     Binary Cross Entropy	        Sigmoid                nn.BCELoss()
 Multi-class classification	 Categorical Cross Entropy	    Softmax                nn.CrossEntropyLoss()
 
+✔ 1. MSELoss()
+Used for regression.
+PyTorch does:
+(y_pred - y_true)^2 
+take mean
+✔ 2. BCELoss()
+Used for binary classification.
+Input must be a probability (sigmoid output).
+✔ 3. CrossEntropyLoss()
+Used for multi-class classification.
+Important:
+Do NOT use softmax manually
+Model outputs raw scores (logits)
+CrossEntropyLoss applies softmax internally
